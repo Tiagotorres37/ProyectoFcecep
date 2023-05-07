@@ -10,12 +10,21 @@
     .btn-second{
         @apply bg-yellow-500 hover:bg-yellow-600 p-2 rounded-lg text-white;
     }
+
+    .btn-success{
+        @apply bg-green-500 hover:bg-green-600 p-2 rounded-lg text-white;
+    }
+
     .btn-danger{
         @apply bg-red-500 hover:bg-red-600 p-2 rounded-lg text-white;
     }
+
+    .btn-new{
+        @apply bg-green-800 hover:bg-green-900 p-2 rounded-lg text-white;
+    }
     
     .btn{
-        @apply p-4 rounded-lg;
+        @apply p-2 rounded-lg;
     }
 }
 

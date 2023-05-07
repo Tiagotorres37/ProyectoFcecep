@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Pais;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class PaisController extends Controller
 {
@@ -13,7 +14,9 @@ class PaisController extends Controller
      */
     public function index()
     {
-        return view('admin.paises.index');
+        $paises = DB::select('select * from paises');
+
+        return view('admin.paises.index',['paises' => $paises]);
     }
 
     /**
@@ -21,7 +24,7 @@ class PaisController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.paises.create');
     }
 
     /**
@@ -29,7 +32,16 @@ class PaisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:5|max:25'
+        ]);
+
+        $pais = new Pais();
+        $pais->nombre = $request->nombre;
+        $pais->save();
+
+        return redirect()->route('paises.index');
+
     }
 
     /**
