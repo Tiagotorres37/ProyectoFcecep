@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         Inicio
                     </x-nav-link>
+                    <x-nav-link :href="route('paises.index')" :active="request()->routeIs('paises.index')">
+                        Paises
+                    </x-nav-link>
                 </div>
             </div>
 
