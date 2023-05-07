@@ -19,7 +19,7 @@
                 <tr>
                   <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $pais->nombre }}</td>
                   <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                    <a href="#" class="btn-primary">Editar</a>
+                    <a href="{{ route('paises.edit',$pais->id) }}" class="btn-primary">Editar</a>
                     <a href="#" class="btn-danger">Eliminar</a>
                   </td>
                 </tr>
