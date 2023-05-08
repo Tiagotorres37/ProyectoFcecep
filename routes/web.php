@@ -26,6 +26,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/admin',[PageController::class, 'index'])->name('admin.dashboard');
+
 Route::resource('/paises',PaisController::class);
 Route::resource('/departamentos',DepartamentoController::class);
 
