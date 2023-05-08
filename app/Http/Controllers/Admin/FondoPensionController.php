@@ -42,15 +42,7 @@ class FondoPensionController extends Controller
         return redirect()->route('pensiones.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $pension = FondoPension::find($id);
 
-        return view();
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,10 +71,23 @@ class FondoPensionController extends Controller
     }
 
     /**
+     * Display the specified resource.
+    */
+    public function show(string $id)
+    {
+        $pension = FondoPension::find($id);
+
+        return view('admin.pensiones.show',['pension' => $pension]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $pension = FondoPension::find($id);
+        $pension->delete();
+
+        return redirect()->route('pensiones.index');
     }
 }
