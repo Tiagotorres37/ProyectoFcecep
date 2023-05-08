@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Departamento;
+use App\Models\Pais;
 use Illuminate\Http\Request;
 
 class DepartamentoController extends Controller
@@ -12,7 +14,9 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        return view('admin.departamentos.index');
+        $departamentos = Departamento::all();
+
+        return view('admin.departamentos.index',['departamentos' => $departamentos]);
     }
 
     /**
@@ -20,7 +24,9 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        //
+        $paises = Pais::all();
+
+        return view('admin.departamentos.create',['paises' => $paises]);
     }
 
     /**
@@ -28,7 +34,17 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:5|max:25',
+            'pais_id' => 'required'
+        ]);
+
+        $departamento = new Departamento();
+        $departamento->nombre = $request->nombre;
+        $departamento->pais_id = $request->pais_id;
+        $departamento->save();
+
+        return redirect()->route('departamentos.index');
     }
 
     /**

@@ -12,4 +12,9 @@ class Pais extends Model
     protected $table = 'paises';
 
     protected $fillable = ['id','nombre'];
+
+    public function departamentos()
+    {
+        return $this->hasMany(Departamento::class);
+    }
 }
