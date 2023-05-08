@@ -23,7 +23,7 @@ class DocumentoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.documentos.create');
     }
 
     /**
@@ -31,7 +31,15 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:25'
+        ]);
+
+        $documento = new Documento();
+        $documento->nombre = $request->nombre;
+        $documento->save();
+
+        return redirect()->route('documentos.index');
     }
 
     /**
