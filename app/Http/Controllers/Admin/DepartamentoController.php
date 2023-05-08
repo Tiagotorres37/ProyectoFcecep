@@ -50,7 +50,7 @@ class DepartamentoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         $departamento = Departamento::find($id);
         $paises = Pais::all();
@@ -79,16 +79,21 @@ class DepartamentoController extends Controller
         /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $departamento = Departamento::find($id);
+
+        return view('admin.departamentos.show',['departamento' => $departamento]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $departamento->delete();
+
+        return redirect()->route('departamentos.index');
     }
 }
