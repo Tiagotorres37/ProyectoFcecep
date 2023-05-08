@@ -3,7 +3,7 @@
 @section('contenido')
 
     <div class="w-[120px]">
-        <a href="{{ route('pensiones.index') }}" class="btn-new flex items-center gap-2 justify-start">
+        <a href="{{ route('pensiones.create') }}" class="btn-new flex items-center gap-2 justify-start">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>

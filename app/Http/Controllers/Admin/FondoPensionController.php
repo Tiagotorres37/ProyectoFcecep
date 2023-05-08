@@ -23,7 +23,7 @@ class FondoPensionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pensiones.create');
     }
 
     /**
@@ -31,7 +31,15 @@ class FondoPensionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:25'
+        ]);
+
+        $pension = new FondoPension();
+        $pension->nombre = $request->nombre;
+        $pension->save();
+
+        return redirect()->route('pensiones.index');
     }
 
     /**
