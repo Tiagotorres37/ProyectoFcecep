@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                         Inicio
                     </x-nav-link>
-                    <x-nav-link :href="route('paises.index')" :active="request()->routeIs('paises.index')">
+                    {{-- <x-nav-link :href="route('paises.index')" :active="request()->routeIs('paises.index')">
                         Paises
                     </x-nav-link>
                     <x-nav-link :href="route('departamentos.index')" :active="request()->routeIs('departamentos.index')">
@@ -26,7 +26,7 @@
                     </x-nav-link>
                     <x-nav-link :href="route('documentos.index')" :active="request()->routeIs('documentos.index')">
                         Documentos
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
             </div>
 
