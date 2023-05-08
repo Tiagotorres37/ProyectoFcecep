@@ -47,7 +47,9 @@ class FondoPensionController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pension = FondoPension::find($id);
+
+        return view();
     }
 
     /**
@@ -55,7 +57,9 @@ class FondoPensionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pension = FondoPension::find($id);
+
+        return view('admin.pensiones.edit',['pension' => $pension]);
     }
 
     /**
@@ -63,7 +67,15 @@ class FondoPensionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:25'
+        ]);
+
+        $pension = FondoPension::find($id);
+        $pension->nombre = $request->nombre;
+        $pension->save();
+
+        return redirect()->route('pensiones.index');
     }
 
     /**
