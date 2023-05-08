@@ -12,6 +12,11 @@
     </div>
 
     <div class="mt-8">
+      @if ($departamentos->count() == 0)
+            <div class="p-10 bg-white text-xl rounded-lg">
+                <p class="text-center">No hay registros!!</p>
+            </div>
+      @else
         <table class="w-full">
             <thead class="bg-gray-50">
               <tr>
@@ -42,6 +47,8 @@
                 </tr>
                 @endforeach
             </tbody>
-          </table>
+        </table>
+      @endif
+
     </div>
 @endsection

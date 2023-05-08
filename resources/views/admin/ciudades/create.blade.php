@@ -24,8 +24,8 @@
             {{ Aire::select($departamentos->pluck('nombre', 'id'), 'departamento_id', 'Departamento') }}
         @endif
 
-        <input type="submit" value="Crear" class="btn-success">
-        
+        <input type="submit" value="Crear" class="btn {{ $departamentos->count() == 0 ? 'btn-disabled' : 'btn-success' }}" {{ $departamentos->count() == 0 ? 'disabled' : '' }}>
+
         {{ Aire::close() }}
 
     </div>

@@ -18,9 +18,15 @@
         
         {{ Aire::input('nombre', 'Nombre')->placeholder('Nombre')  }}
 
-        {{ Aire::select($paises->pluck('nombre', 'id'), 'pais_id', 'Pais') }}
 
-        <input type="submit" value="Crear" class="btn-success">
+        @if ($paises->count() == 0)
+            <p class="mb-2">No existe ningun pais para ser seleccionado, No se puede crear un departamento.</p>
+        @else
+            {{ Aire::select($paises->pluck('nombre', 'id'), 'pais_id', 'Pais') }}
+
+        @endif
+
+        <input type="submit" value="Crear" class="btn {{ $paises->count() == 0 ? 'btn-disabled' : 'btn-success' }}" {{ $paises->count() == 0 ? 'disabled' : '' }}>
         
         {{ Aire::close() }}
 
