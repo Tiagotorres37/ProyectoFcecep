@@ -42,13 +42,7 @@ class DocumentoController extends Controller
         return redirect()->route('documentos.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $documento = Documento::find($id);
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -77,10 +71,23 @@ class DocumentoController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $documento = Documento::find($id);
+        
+        return view('admin.documentos.show',['documento' => $documento]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $documento = Documento::find($id);
+        $documento->delete();
+
+        return redirect()->route('documentos.index');
     }
 }
