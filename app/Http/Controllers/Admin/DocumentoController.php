@@ -47,7 +47,7 @@ class DocumentoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $documento = Documento::find($id);
     }
 
     /**
@@ -55,7 +55,9 @@ class DocumentoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $documento = Documento::find($id);
+
+        return view('admin.documentos.edit',['documento' => $documento]);
     }
 
     /**
@@ -63,7 +65,15 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:25'
+        ]);
+
+        $documento = Documento::find($id);
+        $documento->nombre = $request->nombre;
+        $documento->save();
+
+        return redirect()->route('documentos.index');
     }
 
     /**
