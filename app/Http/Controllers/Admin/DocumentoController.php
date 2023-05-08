@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Documento;
 use Illuminate\Http\Request;
 
 class DocumentoController extends Controller
@@ -12,7 +13,9 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        //
+        $documentos = Documento::all();
+
+        return view('admin.documentos.index',['documentos' => $documentos]);
     }
 
     /**
