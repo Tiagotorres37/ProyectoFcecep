@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('departamentos.index')" :active="request()->routeIs('departamentos.index')">
                         Departamentos
                     </x-nav-link>
+                    <x-nav-link :href="route('ciudades.index')" :active="request()->routeIs('ciudades.index')">
+                        Ciudades
+                    </x-nav-link>
                 </div>
             </div>
 
