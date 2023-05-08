@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CiudadController;
 use App\Http\Controllers\Admin\DepartamentoController;
+use App\Http\Controllers\Admin\DocumentoController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PaisController;
 use App\Http\Controllers\ProfileController;
@@ -31,6 +32,8 @@ Route::get('/admin',[PageController::class, 'index'])->name('admin.dashboard');
 Route::resource('/paises',PaisController::class);
 Route::resource('/departamentos',DepartamentoController::class);
 Route::resource('/ciudades',CiudadController::class);
+Route::resource('/documentos',DocumentoController::class);
+
 
 
 
