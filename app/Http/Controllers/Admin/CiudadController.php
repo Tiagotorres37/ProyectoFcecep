@@ -51,14 +51,6 @@ class CiudadController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
@@ -87,11 +79,26 @@ class CiudadController extends Controller
         return redirect()->route('ciudades.index');
     }
 
+    
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $ciudad = Ciudad::find($id);
+
+        return view('admin.ciudades.show',['ciudad' => $ciudad]);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $ciudad = Ciudad::find($id);
+        $ciudad->delete();
+
+        return redirect()->route('ciudades.index');
+
     }
 }
