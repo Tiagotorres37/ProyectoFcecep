@@ -45,14 +45,6 @@ class PaisController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Pais $pais)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
@@ -79,11 +71,24 @@ class PaisController extends Controller
         return redirect()->route('paises.index');
     }
 
+        /**
+     * Display the specified resource.
+     */
+    public function show($id)
+    {
+        $pais = Pais::find($id);
+
+        return view('admin.paises.show',['pais' => $pais]);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
-        //
+        $pais = Pais::find($id);
+        $pais->delete();
+
+        return redirect()->route('paises.index');
     }
 }
