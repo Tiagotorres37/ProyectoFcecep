@@ -23,7 +23,7 @@ class EpsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.eps.create');
     }
 
     /**
@@ -31,7 +31,15 @@ class EpsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:25'
+        ]);
+
+        $eps = new Eps();
+        $eps->nombre = $request->nombre;
+        $eps->save();
+
+        return redirect()->route('epss.index');
     }
 
     /**
