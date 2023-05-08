@@ -47,7 +47,9 @@ class EpsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $eps = Eps::find($id);
+
+        return ;
     }
 
     /**
@@ -55,7 +57,9 @@ class EpsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $eps = Eps::find($id);
+
+        return view('admin.eps.edit',['eps' => $eps]);
     }
 
     /**
@@ -63,7 +67,15 @@ class EpsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:25'
+        ]);
+
+        $eps = Eps::find($id);
+        $eps->nombre = $request->nombre;
+        $eps->save();
+
+        return redirect()->route('epss.index');
     }
 
     /**
