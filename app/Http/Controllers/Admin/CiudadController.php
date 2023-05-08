@@ -63,7 +63,10 @@ class CiudadController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $ciudad = Ciudad::find($id);
+        $departamentos = Departamento::all();
+
+        return view('admin.ciudades.edit',['ciudad' => $ciudad,'departamentos' => $departamentos]);
     }
 
     /**
@@ -71,7 +74,17 @@ class CiudadController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:25',
+            'departamento_id' => 'required'
+        ]);
+
+        $ciudad = Ciudad::find($id);
+        $ciudad->nombre = $request->nombre;
+        $ciudad->departamento_id = $request->departamento_id;
+        $ciudad->save();
+
+        return redirect()->route('ciudades.index');
     }
 
     /**
