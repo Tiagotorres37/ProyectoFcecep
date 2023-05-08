@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ciudad;
+use App\Models\Departamento;
 use Illuminate\Http\Request;
 use DB;
 
@@ -25,7 +26,10 @@ class CiudadController extends Controller
      */
     public function create()
     {
-        //
+
+        $departamentos = Departamento::all();
+
+        return view('admin.ciudades.create',['departamentos' => $departamentos]);
     }
 
     /**
@@ -33,7 +37,17 @@ class CiudadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre' => 'required|min:3|max:25',
+            'departamento_id' => 'required'
+        ]);
+
+        $ciudad = new Ciudad();
+        $ciudad->nombre = $request->nombre;
+        $ciudad->departamento_id = $request->departamento_id;
+        $ciudad->save();
+
+        return redirect()->route('ciudades.index');
     }
 
     /**
