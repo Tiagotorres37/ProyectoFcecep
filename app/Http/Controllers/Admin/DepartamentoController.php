@@ -48,25 +48,38 @@ class DepartamentoController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $paises = Pais::all();
+
+        return view('admin.departamentos.edit',['departamento' => $departamento, 'paises' => $paises]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
+    {
+        $this->validate($request,[
+            'nombre' => 'required|min:5|max:25',
+            'pais_id' => 'required'
+        ]);
+
+        $departamento = Departamento::find($id);
+        $departamento->nombre = $request->nombre;
+        $departamento->pais_id = $request->pais_id;
+        $departamento->save();
+
+        return redirect()->route('departamentos.index');
+    }
+
+        /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
         //
     }
