@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DepartamentoController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PaisController;
 use App\Http\Controllers\ProfileController;
@@ -26,6 +27,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/admin',[PageController::class, 'index'])->name('admin.dashboard');
 Route::resource('/paises',PaisController::class);
+Route::resource('/departamentos',DepartamentoController::class);
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

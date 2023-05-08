@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('paises.index')" :active="request()->routeIs('paises.index')">
                         Paises
                     </x-nav-link>
+                    <x-nav-link :href="route('departamentos.index')" :active="request()->routeIs('departamentos.index')">
+                        Departamentos
+                    </x-nav-link>
                 </div>
             </div>
 
