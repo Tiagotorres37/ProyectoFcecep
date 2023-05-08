@@ -42,15 +42,7 @@ class EpsController extends Controller
         return redirect()->route('epss.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $eps = Eps::find($id);
 
-        return ;
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -79,10 +71,23 @@ class EpsController extends Controller
     }
 
     /**
+     * Display the specified resource.
+    */
+    public function show(string $id)
+    {
+        $eps = Eps::find($id);
+
+        return view('admin.eps.show',['eps' => $eps]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $eps = Eps::find($id);
+        $eps->delete();
+
+        return redirect()->route('epss.index');
     }
 }
