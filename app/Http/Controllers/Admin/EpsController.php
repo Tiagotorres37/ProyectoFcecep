@@ -39,7 +39,7 @@ class EpsController extends Controller
         $eps->nombre = $request->nombre;
         $eps->save();
 
-        return redirect()->route('epss.index');
+        return redirect()->route('epss.index')->with('success','Eps creada con exito!');
     }
 
 
@@ -67,7 +67,7 @@ class EpsController extends Controller
         $eps->nombre = $request->nombre;
         $eps->save();
 
-        return redirect()->route('epss.index');
+        return redirect()->route('epss.index')->with('success','Eps actualizada con exito!');
     }
 
     /**
@@ -88,6 +88,6 @@ class EpsController extends Controller
         $eps = Eps::find($id);
         $eps->delete();
 
-        return redirect()->route('epss.index');
+        return redirect()->route('epss.index')->with('success','Eps eliminada con exito!');
     }
 }

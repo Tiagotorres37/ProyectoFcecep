@@ -47,7 +47,7 @@ class CiudadController extends Controller
         $ciudad->departamento_id = $request->departamento_id;
         $ciudad->save();
 
-        return redirect()->route('ciudades.index');
+        return redirect()->route('ciudades.index')->with('success','Ciudad creada con exito!');
     }
 
     /**
@@ -76,7 +76,7 @@ class CiudadController extends Controller
         $ciudad->departamento_id = $request->departamento_id;
         $ciudad->save();
 
-        return redirect()->route('ciudades.index');
+        return redirect()->route('ciudades.index')->with('success','Ciudad actualizada con exito!');
     }
 
     
@@ -98,7 +98,7 @@ class CiudadController extends Controller
         $ciudad = Ciudad::find($id);
         $ciudad->delete();
 
-        return redirect()->route('ciudades.index');
+        return redirect()->route('ciudades.index')->with('success','Ciudad eliminada con exito!');
 
     }
 }

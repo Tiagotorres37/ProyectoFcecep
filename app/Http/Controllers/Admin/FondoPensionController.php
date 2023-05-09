@@ -39,7 +39,7 @@ class FondoPensionController extends Controller
         $pension->nombre = $request->nombre;
         $pension->save();
 
-        return redirect()->route('pensiones.index');
+        return redirect()->route('pensiones.index')->with('success','Fondo de pension creado con exito!');
     }
 
 
@@ -67,7 +67,7 @@ class FondoPensionController extends Controller
         $pension->nombre = $request->nombre;
         $pension->save();
 
-        return redirect()->route('pensiones.index');
+        return redirect()->route('pensiones.index')->with('success','Fondo de pension actualizado con exito!');
     }
 
     /**
@@ -88,6 +88,6 @@ class FondoPensionController extends Controller
         $pension = FondoPension::find($id);
         $pension->delete();
 
-        return redirect()->route('pensiones.index');
+        return redirect()->route('pensiones.index')->with('success','Fondo de pension eliminado con exito!');
     }
 }

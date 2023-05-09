@@ -35,7 +35,7 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nombre' => 'required|min:5|max:25',
+            'nombre' => 'required|min:3|max:25',
             'pais_id' => 'required'
         ]);
 
@@ -44,7 +44,7 @@ class DepartamentoController extends Controller
         $departamento->pais_id = $request->pais_id;
         $departamento->save();
 
-        return redirect()->route('departamentos.index');
+        return redirect()->route('departamentos.index')->with('success','Departamento creado con exito!');
     }
 
     /**
@@ -64,7 +64,7 @@ class DepartamentoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nombre' => 'required|min:5|max:25',
+            'nombre' => 'required|min:3|max:25',
             'pais_id' => 'required'
         ]);
 
@@ -73,7 +73,7 @@ class DepartamentoController extends Controller
         $departamento->pais_id = $request->pais_id;
         $departamento->save();
 
-        return redirect()->route('departamentos.index');
+        return redirect()->route('departamentos.index')->with('success','Departamento actualizado con exito!');
     }
 
         /**
@@ -94,6 +94,6 @@ class DepartamentoController extends Controller
         $departamento = Departamento::find($id);
         $departamento->delete();
 
-        return redirect()->route('departamentos.index');
+        return redirect()->route('departamentos.index')->with('success','Departamento eliminado con exito!');
     }
 }

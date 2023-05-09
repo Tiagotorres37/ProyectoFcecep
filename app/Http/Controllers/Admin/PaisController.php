@@ -40,7 +40,7 @@ class PaisController extends Controller
         $pais->nombre = $request->nombre;
         $pais->save();
 
-        return redirect()->route('paises.index');
+        return redirect()->route('paises.index')->with('success','Pais creado con exito!');
 
     }
 
@@ -68,7 +68,7 @@ class PaisController extends Controller
         $pais->nombre = $request->nombre;
         $pais->save();
 
-        return redirect()->route('paises.index');
+        return redirect()->route('paises.index')->with('success','Pais actualizado con exito!');
     }
 
         /**
@@ -89,6 +89,6 @@ class PaisController extends Controller
         $pais = Pais::find($id);
         $pais->delete();
 
-        return redirect()->route('paises.index');
+        return redirect()->route('paises.index')->with('success','Pais eliminado con exito!');
     }
 }

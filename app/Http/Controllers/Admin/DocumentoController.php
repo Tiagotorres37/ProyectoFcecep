@@ -39,7 +39,7 @@ class DocumentoController extends Controller
         $documento->nombre = $request->nombre;
         $documento->save();
 
-        return redirect()->route('documentos.index');
+        return redirect()->route('documentos.index')->with('success','Documento creado con exito!');
     }
 
 
@@ -67,7 +67,7 @@ class DocumentoController extends Controller
         $documento->nombre = $request->nombre;
         $documento->save();
 
-        return redirect()->route('documentos.index');
+        return redirect()->route('documentos.index')->with('success','Documento actualizado con exito!');
     }
 
     /**
@@ -88,6 +88,6 @@ class DocumentoController extends Controller
         $documento = Documento::find($id);
         $documento->delete();
 
-        return redirect()->route('documentos.index');
+        return redirect()->route('documentos.index')->with('success','Documento eliminado con exito!');
     }
 }
