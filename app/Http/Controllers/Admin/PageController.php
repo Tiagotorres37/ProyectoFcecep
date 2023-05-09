@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -18,9 +19,19 @@ class PageController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function dashboard()
     {
-        //
+        $user = Auth::user();
+
+        if($user->rol_id == 1){
+            return view('dashboard');
+        }
+        if($user->rol_id == 2){
+            return view('dashboard');
+        }
+
+        return redirect()->route('admin.dashboard');
+
     }
 
     /**

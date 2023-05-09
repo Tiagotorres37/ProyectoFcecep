@@ -12,21 +12,9 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         Inicio
                     </x-nav-link>
-                    {{-- <x-nav-link :href="route('paises.index')" :active="request()->routeIs('paises.index')">
-                        Paises
-                    </x-nav-link>
-                    <x-nav-link :href="route('departamentos.index')" :active="request()->routeIs('departamentos.index')">
-                        Departamentos
-                    </x-nav-link>
-                    <x-nav-link :href="route('ciudades.index')" :active="request()->routeIs('ciudades.index')">
-                        Ciudades
-                    </x-nav-link>
-                    <x-nav-link :href="route('documentos.index')" :active="request()->routeIs('documentos.index')">
-                        Documentos
-                    </x-nav-link> --}}
                 </div>
             </div>
 
