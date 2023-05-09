@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DepartamentoController;
 use App\Http\Controllers\Admin\DocumentoController;
 use App\Http\Controllers\Admin\EpsController;
 use App\Http\Controllers\Admin\FondoPensionController;
+use App\Http\Controllers\Admin\IdiomaController;
 use App\Http\Controllers\Admin\InstitucionController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PaisController;
@@ -44,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/epss',EpsController::class);
     Route::resource('/pensiones',FondoPensionController::class);
     Route::resource('/instituciones',InstitucionController::class);
-
+    Route::resource('/idiomas',IdiomaController::class);
 
 });
 
