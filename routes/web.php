@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\IdiomaController;
 use App\Http\Controllers\Admin\InstitucionController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PaisController;
+use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Controllers\EmpleadorController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +46,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('/pensiones',FondoPensionController::class);
     Route::resource('/instituciones',InstitucionController::class);
     Route::resource('/idiomas',IdiomaController::class);
+
+    Route::resource('/usuarios',UsuarioController::class);
+    Route::resource('/empleador',EmpleadorController::class);
+
+
 
 });
 
