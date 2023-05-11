@@ -65,8 +65,10 @@ class UsuarioController extends Controller
     {
         $usuario = User::find($id);
         $roles = Rol::all();
+        $empleadores = User::where('rol_id',2)->get();
 
-        return view('admin.usuarios.edit',['usuario' => $usuario,'roles' => $roles]);
+
+        return view('admin.usuarios.edit',['usuario' => $usuario,'roles' => $roles,'empleadores' => $empleadores]);
     }
 
     /**
@@ -78,13 +80,16 @@ class UsuarioController extends Controller
             'name' => 'required|min:3|max:25',
             'email' => 'required|email',
             'password' => 'required|min:3|max:25|confirmed',
-            'rol_id' => 'required|numeric'
+            'rol_id' => 'required|numeric',
+            'empleador_id' => 'required|numeric'
+
         ]);
 
         $usuario = User::find($id);
         $usuario->name = $request->name;
         $usuario->email = $request->email;
         $usuario->rol_id = $request->rol_id;
+        $usuario->empleador_id = $request->empleador_id;
         $usuario->password = Hash::make($request->password);
         $usuario->save();
 
