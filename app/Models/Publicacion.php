@@ -13,7 +13,7 @@ class Publicacion extends Model
 
     protected $fillable = ['id','titulo','descripcion','salario','empleador_id'];
 
-    public function user()
+    public function empleador()
     {
         return $this->belongsTo(User::class, 'empleador_id');
     }

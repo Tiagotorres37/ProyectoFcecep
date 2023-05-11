@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('publicaciones', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->text('description');
+            $table->text('descripcion');
             $table->double('salario');
             $table->integer('empleador_id');
             $table->timestamps();

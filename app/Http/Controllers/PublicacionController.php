@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Publicacion;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PublicacionController extends Controller
 {
@@ -11,7 +14,9 @@ class PublicacionController extends Controller
      */
     public function index()
     {
-        //
+        $publicaciones = Publicacion::all();
+
+        return view('publicaciones.index',['publicaciones' => $publicaciones]);
     }
 
     /**
@@ -19,7 +24,9 @@ class PublicacionController extends Controller
      */
     public function create()
     {
-        //
+        $empleadores = User::where('rol_id',2)->get();
+
+        return view('publicaciones.create',['empleadores' => $empleadores]);
     }
 
     /**
@@ -27,7 +34,29 @@ class PublicacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = Auth::user();
+
+        $this->validate($request,[
+            'titulo' => 'required|min:3|max:30',
+            'descripcion' => 'required|min:3|max:255',
+            'salario' => 'required|numeric'
+        ]);
+
+        $publicacion = new Publicacion();
+        $publicacion->titulo = $request->titulo;
+        $publicacion->descripcion = $request->descripcion;
+        $publicacion->salario = $request->salario;
+
+        if($usuario->rol_id == 3){
+            $publicacion->empleador_id = $request->empleador_id;
+        }else{
+            $publicacion->empleador_id = $usuario->id;
+        }
+
+        $publicacion->save();
+
+        return redirect()->route('publicaciones.index')->with('success','Publicacion creada con exito!!');
+
     }
 
     /**
@@ -35,7 +64,9 @@ class PublicacionController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $publicacion = Publicacion::find($id);
+
+        return view('publicaciones.show',['publicacion' => $publicacion]);
     }
 
     /**

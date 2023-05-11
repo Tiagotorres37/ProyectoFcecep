@@ -5,8 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        FCECEP
+                    <a href="{{ route('dashboard') }}" class="flex items-center w-[150px]">
+                        <img src="{{ asset('img/fcecep.png') }}" alt="">
                     </a>
                 </div>
 
