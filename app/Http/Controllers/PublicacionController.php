@@ -74,7 +74,10 @@ class PublicacionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $publicacion = Publicacion::find($id);
+        $empleadores = User::where('rol_id',2)->get();
+
+        return view('publicaciones.edit',['publicacion' => $publicacion, 'empleadores' => $empleadores]);
     }
 
     /**
@@ -82,7 +85,29 @@ class PublicacionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $usuario = Auth::user();
+
+        $this->validate($request,[
+            'titulo' => 'required|min:3|max:30',
+            'descripcion' => 'required|min:3|max:255',
+            'salario' => 'required|numeric'
+        ]);
+
+        $publicacion = Publicacion::find($id);
+        $publicacion->titulo = $request->titulo;
+        $publicacion->descripcion = $request->descripcion;
+        $publicacion->salario = $request->salario;
+
+        if($usuario->rol_id == 3){
+            $publicacion->empleador_id = $request->empleador_id;
+        }else{
+            $publicacion->empleador_id = $usuario->id;
+        }
+
+        $publicacion->save();
+
+        return redirect()->route('publicaciones.index')->with('success','Publicacion actualizada con exito!!');
+
     }
 
     /**
@@ -90,6 +115,9 @@ class PublicacionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $publicacion = Publicacion::find($id);
+        $publicacion->delete();
+
+        return redirect()->route('publicaciones.index')->with('success','Publicacion eliminada con exito!!');
     }
 }

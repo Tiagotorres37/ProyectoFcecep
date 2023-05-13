@@ -4,23 +4,23 @@
 
 @layer components{
     .btn-primary{
-        @apply bg-blue-500 hover:bg-blue-600 p-2 rounded-lg text-white;
+        @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
     }
 
     .btn-second{
-        @apply bg-yellow-500 hover:bg-yellow-600 p-2 rounded-lg text-white;
+        @apply bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded;
     }
 
     .btn-success{
-        @apply bg-green-500 hover:bg-green-600 p-2 rounded-lg text-white;
+        @apply bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded;
     }
 
     .btn-danger{
-        @apply bg-red-500 hover:bg-red-600 p-2 rounded-lg text-white;
+        @apply bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded;
     }
 
     .btn-new{
-        @apply bg-green-800 hover:bg-green-900 p-2 rounded-lg text-white;
+        @apply bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded;
     }
 
     .btn-disabled{

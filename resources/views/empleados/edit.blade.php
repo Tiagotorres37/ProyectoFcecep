@@ -19,7 +19,7 @@
         {{ Aire::input('password', 'Contraseña')->type('password')->placeholder('Contraseña')  }}
         {{ Aire::input('password_confirmation', 'Confirmar Contraseña')->type('password')->placeholder('Contraseña')  }}
 
-        <input type="submit" value="Actualizar" class="btn-success">
+        <input type="submit" value="Actualizar" class="btn-success" >
         
         {{ Aire::close() }}
 
