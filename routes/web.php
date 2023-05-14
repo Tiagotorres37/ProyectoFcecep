@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\InstitucionController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\PaisController;
 use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Controllers\CvController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\EmpleadorController;
 use App\Http\Controllers\ProfileController;
@@ -56,6 +57,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/publicaciones',PublicacionController::class);
 
+    Route::resource('/cv',CvController::class);
+
+    Route::get('hojadevida/{id}',[CvController::class,'cv'])->name('cv.hoja');
 
 });
 

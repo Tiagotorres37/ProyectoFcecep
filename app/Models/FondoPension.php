@@ -12,4 +12,9 @@ class FondoPension extends Model
     protected $table = 'fondos_pension';
 
     protected $fillable = ['id','nombre'];
+
+    public function usuarios()
+    {
+        return $this->hasMany(Usuario::class);
+    }
 }

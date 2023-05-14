@@ -21,6 +21,17 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'fecha_de_nacimiento',
+        'edad',
+        'rol_id',
+        'empleador_id',
+        'descripcion',
+        'documento_id',
+        'documento',
+        'fondos_pension_id',
+        'institucion_id',
+        'idioma_id',
+        'ciudad_id'
     ];
 
     /**
@@ -55,5 +66,34 @@ class User extends Authenticatable
     public function publicaciones()
     {
         return $this->hasMany(Publicacion::class);
+    }
+
+    public function idioma()
+    {
+        return $this->belongsTo(Idioma::class);
+    }
+
+    public function documento()
+    {
+        return $this->belongsTo(Documento::class);
+    }
+
+    public function fondos_pension()
+    {
+        return $this->belongsTo(FondoPension::class);
+    }
+
+    public function eps()
+    {
+        return $this->belongsTo(Eps::class);
+    }
+
+    public function institucion(){
+        return $this->belongsTo(Institucion::class);
+    }
+
+    public function ciudad()
+    {
+        return $this->belongsTo(Ciudad::class, 'ciudad_id');
     }
 }
