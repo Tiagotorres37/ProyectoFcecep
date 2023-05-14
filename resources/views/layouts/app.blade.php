@@ -16,7 +16,9 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            @if (Auth::user())
+                @include('layouts.navigation')
+            @endif
 
             <div class="max-w-7xl m-4 mx-auto p-4 sm:p-6 lg:p-8">
                 @if (session('success'))

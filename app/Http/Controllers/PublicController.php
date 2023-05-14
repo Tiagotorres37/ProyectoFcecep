@@ -1,37 +1,40 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Publicacion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class PageController extends Controller
+class PublicController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+    */
+    public function dashboard(Request $request)
+    {
+        $publicaciones = Publicacion::when($request->filled('q'), function ($q) use ($request){
+            $q->where('titulo','LIKE','%'.$request->q.'%')
+            ->orWhere('descripcion','LIKE','%'.$request->q.'%')
+            ->orWhere('salario','=',$request->q);;
+        })->get();
+
+        return view('public.dashboard',['publicaciones' => $publicaciones]);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.index');
+        return view('public.empleador');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function dashboard()
+    public function create()
     {
-        $user = Auth::user();
-
-        if($user->rol_id == 1){
-            return redirect()->route('public.dashboard');
-        }
-        if($user->rol_id == 2){
-            return redirect()->route('empleador.dashboard');
-        }
-
-        return redirect()->route('admin.dashboard');
-
+        //
     }
 
     /**

@@ -14,6 +14,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\EmpleadorController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicacionController;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,19 +28,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[PublicController::class, 'dashboard'])->name('public.dashboard');
 
 Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard',[PageController::class, 'dashboard'])->name('dashboard');
+    Route::get('/empleador/dashboard',[PublicController::class, 'index'])->name('empleador.dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/admin',[PageController::class, 'index'])->name('admin.dashboard');
+
     Route::resource('/paises',PaisController::class);
     Route::resource('/departamentos',DepartamentoController::class);
     Route::resource('/ciudades',CiudadController::class);

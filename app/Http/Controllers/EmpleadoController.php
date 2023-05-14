@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class EmpleadoController extends Controller
 {
@@ -43,7 +44,7 @@ class EmpleadoController extends Controller
         $empleado = new User();
         $empleado->name = $request->name;
         $empleado->email = $request->email;
-        $empleado->password = $request->password;
+        $empleado->password =  Hash::make($request->password);
         $empleado->empleador_id = $empleador->id;
         $empleado->save();
 
@@ -84,7 +85,7 @@ class EmpleadoController extends Controller
         $empleado = User::find($id);
         $empleado->name = $request->name;
         $empleado->email = $request->email;
-        $empleado->password = $request->password;
+        $empleado->password =  Hash::make($request->password);
         $empleado->save();
 
         return redirect()->route('empleados.index')->with('success','Empleado actualizado con exito!!');
