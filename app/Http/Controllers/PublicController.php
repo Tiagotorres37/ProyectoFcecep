@@ -15,7 +15,7 @@ class PublicController extends Controller
         $publicaciones = Publicacion::when($request->filled('q'), function ($q) use ($request){
             $q->where('titulo','LIKE','%'.$request->q.'%')
             ->orWhere('descripcion','LIKE','%'.$request->q.'%')
-            ->orWhere('salario','=',$request->q);;
+            ->orWhere('salario','=',$request->q);
         })->get();
 
         return view('public.dashboard',['publicaciones' => $publicaciones]);

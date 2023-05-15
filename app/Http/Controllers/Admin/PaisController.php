@@ -33,7 +33,7 @@ class PaisController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nombre' => 'required|min:3|max:25'
+            'nombre' => 'required|min:3|max:25|unique:paises'
         ]);
 
         $pais = new Pais();
