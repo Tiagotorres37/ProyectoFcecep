@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('institucion_id');
             $table->integer('ciudad_id');
             $table->integer('idioma_id');
+            $table->date('fecha_de_nacimiento')->nullable();
+            $table->integer('edad');
+            $table->integer('eps_id');
         });
     }
 
