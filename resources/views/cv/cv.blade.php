@@ -7,85 +7,93 @@
     <title>Hoja de vida</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-        .titulo{
-            display: flex;
-            justify-content: center;
-            background-color: blue;
-            border: 1px solid black;
-            color: white;
-            padding: 2px;
-        }
-        .subtitulo{
-            background-color: blue;
-            border: 1px solid black;
-            color: white;
-            padding: 2px;
-        }
-        .texto{
-            border: 1px solid black;
-            padding: 4px;
-        }
+      
+      #header {
+        background-color: #007ACC;
+        color: #FFF;
+        padding: 10px;
+      }
+      
+      #personal-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px;
+      }
+      
+      #personal-info div {
+        flex-basis: 30%;
+      }
+      
+      #about-me {
+        padding: 10px;
+      }
+      
+      #languages {
+        padding: 10px;
+      }
+      
+      #documents {
+        padding: 10px;
+      }
+      
+      ul {
+        list-style: none;
+        padding-left: 0;
+      }
+      
+      li {
+        margin-bottom: 10px;
+      }
+      
+      .label {
+        font-weight: bold;
+      }
     </style>
 </head>
 <body>
-    <center>
-        <table>
-            <thead>
-                <tr>
-                    <td class="titulo" colspan="2">HOJA DE VIDA</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="subtitulo">Nombre:</td>
-                    <td class="texto">{{ $usuario->name }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Fecha de nacimiento:</td>
-                    <td class="texto">{{ $usuario->fecha_de_nacimiento }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Pais:</td>
-                    <td class="texto">{{ $usuario->ciudad->departamento->pais->nombre }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Departamento:</td>
-                    <td class="texto">{{ $usuario->ciudad->departamento->nombre }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Ciudad:</td>
-                    <td class="texto">{{ $usuario->ciudad->nombre }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Tipo de documento:</td>
-                    <td class="texto">{{ $usuario->documento->nombre }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Documento:</td>
-                    <td class="texto">{{ $usuario->documento_numero }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Descripcion:</td>
-                    <td class="texto">{{ $usuario->descripcion }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Idioma:</td>
-                    <td class="texto">{{ $usuario->idioma->nombre }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Eps:</td>
-                    <td class="texto">{{ $usuario->eps->nombre }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Fondo de pension:</td>
-                    <td class="texto">{{ $usuario->fondos_pension->nombre }}</td>
-                </tr>
-                <tr>
-                    <td class="subtitulo">Estudio en:</td>
-                    <td class="texto">{{ $usuario->institucion->nombre }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </center>
+    <header id="header">
+        <h1>{{ $usuario->name }}</h1>
+        <h2>
+            {{ $usuario->ciudad->departamento->pais->nombre }},
+            {{ $usuario->ciudad->departamento->nombre }},
+            {{ $usuario->ciudad->nombre }}
+        </h2>
+        <p>Correo Electrónico: {{ $usuario->email }}</p>
+    </header>
+    <div id="personal-info">
+        <div>
+          <p class="label">Fecha de Nacimiento:</p>
+          <p>{{ $usuario->fecha_de_nacimiento }}</p>
+        </div>
+        <div>
+          <p class="label">EPS:</p>
+          <p>{{ $usuario->eps->nombre }}</p>
+        </div>
+        <div>
+          <p class="label">Fondo de Pensiones:</p>
+          <p>{{ $usuario->fondos_pension->nombre }}</p>
+        </div>
+        <div>
+          <p class="label">Tipo de Documento:</p>
+          <p>{{ $usuario->documento->nombre }}</p>
+        </div>
+        <div>
+          <p class="label">Número de Documento:</p>
+          <p>{{ $usuario->documento_numero }}</p>
+        </div>
+    </div>
+    <div id="about-me">
+        <h3>Sobre Mí:</h3>
+        <p>{{ $usuario->descripcion }}</p>
+    </div>
+    <div id="languages">
+        <h3>Idioma:</h3>
+        <p>{{ $usuario->idioma->nombre }}</p>
+    </div>
+    <div id="documents">
+        <h3>Institucion:</h3>
+        <p>{{ $usuario->institucion->nombre }}</p>
+    </div>
 </body>
 </html>
